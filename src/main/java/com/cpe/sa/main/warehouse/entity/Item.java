@@ -30,7 +30,7 @@ public class Item {
     private List<TakeIn> takein = new ArrayList<>();
 
 
-    protected Item(){}
+    public Item(){}
 
     public Item(Long item_id){
         this.item_id = item_id;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class DataLoader implements ApplicationRunner {
+public class DataLoaderWareHouse implements ApplicationRunner {
 
     private final TypeListRepository typeListRepository;
     private final ItemRepository itemRepository;
@@ -18,7 +18,7 @@ public class DataLoader implements ApplicationRunner {
     private final TakeInRepository takeInRepository;
 
     @Autowired
-    public DataLoader(TypeListRepository typeListRepository, ItemRepository itemRepository, UserRepository userRepository, TakeInRepository takeInRepository){
+    public DataLoaderWareHouse(TypeListRepository typeListRepository, ItemRepository itemRepository, UserRepository userRepository, TakeInRepository takeInRepository){
         this.typeListRepository = typeListRepository;
         this.itemRepository = itemRepository;
         this.userRepository = userRepository;
@@ -44,15 +44,14 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(new User("Miwfour", "Pharmacy"));
         userRepository.findAll().forEach(System.out::println);
         
-        takeInRepository.save(new TakeIn(1L, 1L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(1L, 2L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(1L, 3L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(2L, 1L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(2L, 2L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(2L, 3L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(3L, 1L, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(3L, 2l, 5, "11:12", "11 มกราคม 2560"));
-        takeInRepository.save(new TakeIn(3L, 3l, 5, "11:12", "11 มกราคม 2560"));
+        takeInRepository.save(new TakeIn(1L, 2L, 5 ));
+        takeInRepository.save(new TakeIn(1L, 3L, 5 ));
+        takeInRepository.save(new TakeIn(2L, 1L, 5 ));
+        takeInRepository.save(new TakeIn(2L, 2L, 5 ));
+        takeInRepository.save(new TakeIn(3L, 2l, 5 ));
+        takeInRepository.save(new TakeIn(2L, 3L, 5 ));
+        takeInRepository.save(new TakeIn(3L, 1L, 5 ));
+        takeInRepository.save(new TakeIn(3L, 3l, 5 ));
         takeInRepository.findAll().forEach(System.out::println);
 
 	}

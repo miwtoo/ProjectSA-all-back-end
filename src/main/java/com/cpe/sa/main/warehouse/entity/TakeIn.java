@@ -1,5 +1,8 @@
 package com.cpe.sa.main.warehouse.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.*;
 
 import lombok.*;
@@ -21,24 +24,25 @@ public class TakeIn{
     private Item item_id;
 
     private int amount;
-    private String time;
-    private String date;
+    private  time;
+    private Date date;
 
     protected TakeIn() {}
 
     
 
-    public TakeIn(Long user_id , Long item_id, int amount, String time, String date){
+    public TakeIn(Long user_id , Long item_id, int amount){
     
         User user = new User(user_id);
         Item item = new Item(item_id);
 
         this.user_id = user;
         this.item_id = item;
-
         this.amount = amount;
-        this.time = time;
-        this.date = date;
+
+
+        this.time = new Date();
+        this.date = new Date();
     }
 
 }
