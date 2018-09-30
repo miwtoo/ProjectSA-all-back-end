@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/item")
 public class ItemController{
-    @Autowired  private final ItemRepository itemRepository;
+    @Autowired  private ItemRepository itemRepository;
     @Autowired  private TypeListRepository typeListRepository;
 
     
@@ -38,12 +38,13 @@ public class ItemController{
         return itemRepository.findAll();
     }
 
-    @PostMapping("{name}/{price}/{amount}/{typeId}")
+    @PostMapping("/{name}/{price}/{amount}/{typeId}")
     public Item Add(Item newItem, @PathVariable String name, @PathVariable float price, @PathVariable int amount, @PathVariable Long typeId) {
         Optional<TypeList> type = typeListRepository.findById(typeId);
 
         newItem.setItem_name(name);
-        newItem.setPrice(price);
+        //newItem.setPrice(price); ไม่ใส่ก็ทำงาน ไม่รู้ทำไม 55555
+        //newItem.setAmount(amount);
         newItem.setType(type.get());
         
         return itemRepository.save(newItem);

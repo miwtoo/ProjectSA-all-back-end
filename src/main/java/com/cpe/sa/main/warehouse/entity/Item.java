@@ -27,7 +27,7 @@ public class Item {
 
     @OneToMany(mappedBy = "item_id")
     @JsonIgnore
-    private List<TakeIn> takein = new ArrayList<>();
+    private List<Withdraw> withdraws = new ArrayList<>();
 
 
     public Item(){}

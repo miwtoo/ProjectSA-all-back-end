@@ -1,16 +1,15 @@
 package com.cpe.sa.main.warehouse.entity;
 
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.*;
-
 import lombok.*;
 
 @Entity
-@Data
-@Table(name = "Take_in")
-public class TakeIn{
+@Getter @Setter
+@Table(name = "Withdraw")
+public class Withdraw {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,26 +22,22 @@ public class TakeIn{
     @JoinColumn(name="item_id")
     private Item item_id;
 
-    private int amount;
-    private  time;
+    private Integer withdraw_amount; // ใช้ int แล้ว error ว่าเห็นเป็น null
+    private Timestamp time;
     private Date date;
 
-    protected TakeIn() {}
+    protected Withdraw() {}
 
-    
-
-    public TakeIn(Long user_id , Long item_id, int amount){
+    public Withdraw(Long user_id , Long item_id, Integer withdraw_amount){
     
         User user = new User(user_id);
         Item item = new Item(item_id);
 
         this.user_id = user;
         this.item_id = item;
-        this.amount = amount;
+        this.withdraw_amount = withdraw_amount;
 
-
-        this.time = new Date();
         this.date = new Date();
+        this.time = new Timestamp(System.currentTimeMillis());
     }
-
 }

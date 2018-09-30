@@ -23,7 +23,7 @@ public class User {
 
     @OneToMany(mappedBy = "user_id")
     @JsonIgnore
-    private List<TakeIn> takein = new ArrayList<>();
+    private List<Withdraw> withdraws = new ArrayList<>();
 
     protected User(){}
 
