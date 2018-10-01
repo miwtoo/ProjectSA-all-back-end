@@ -6,7 +6,6 @@ import java.util.Optional;
 import com.cpe.sa.main.warehouse.entity.User;
 import com.cpe.sa.main.warehouse.repository.UserRepository;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

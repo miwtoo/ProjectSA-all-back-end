@@ -16,23 +16,25 @@ import lombok.*;
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long user_id;
+    @Column(name = "user_id")
+    private Long userId;
 
-    private String user_name;
+    @Column(name = "user_name")
+    private String userName;
     private String position;
 
-    @OneToMany(mappedBy = "user_id")
+    @OneToMany(mappedBy = "userId")
     @JsonIgnore
     private List<Withdraw> withdraws = new ArrayList<>();
 
     protected User(){}
 
-    public User(Long user_id){
-        this.user_id = user_id;
+    public User(Long userId){
+        this.userId = userId;
     }
 
-    public User(String user_name, String position){
-        this.user_name = user_name;
+    public User(String userName, String position){
+        this.userName = userName;
         this.position = position;
     }
 

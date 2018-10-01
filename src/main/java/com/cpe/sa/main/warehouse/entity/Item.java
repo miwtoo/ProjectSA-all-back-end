@@ -15,9 +15,11 @@ import lombok.*;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long item_id;
+    @Column(name = "item_id")
+    private Long itemId;
 
-    private String item_name;
+    @Column(name = "item_name")
+    private String itemName;
     private float price;
     private int amount;
 
@@ -25,24 +27,24 @@ public class Item {
     @JoinColumn(name="type_id")
     private TypeList type;
 
-    @OneToMany(mappedBy = "item_id")
+    @OneToMany(mappedBy = "itemId")
     @JsonIgnore
     private List<Withdraw> withdraws = new ArrayList<>();
 
 
     public Item(){}
 
-    public Item(Long item_id){
-        this.item_id = item_id;
+    public Item(Long itemId){
+        this.itemId = itemId;
     }
 
-    public Item(String item_name, float price,int amount, Long type) {
-        this.item_name = item_name;
+    public Item(String itemName, float price,int amount, Long type) {
+        this.itemName = itemName;
         this.price = price;
         this.amount = amount;
 
         TypeList list = new TypeList();
-        list.setType_id(type);
+        list.setTypeId(type);
         this.type = list;
     }
 }

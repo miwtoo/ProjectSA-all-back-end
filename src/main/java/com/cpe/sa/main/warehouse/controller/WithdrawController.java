@@ -1,6 +1,5 @@
 package com.cpe.sa.main.warehouse.controller;
 
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
@@ -13,7 +12,6 @@ import com.cpe.sa.main.warehouse.repository.UserRepository;
 import com.cpe.sa.main.warehouse.repository.WithDrawRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,13 +48,15 @@ public class WithdrawController{
         Optional<User> user = userRepository.findById(user_id);
         Optional<Item> item = itemRepository.findById(item_id);
 
-        newWithdraw.setUser_id(user.get());
-        newWithdraw.setItem_id(item.get());
-
+        newWithdraw.setUserId(user.get());
+        newWithdraw.setItemId(item.get());
+        if((item.get().getAmount()- withdraw_amount) >= 0)
+            item.get().setAmount(item.get().getAmount()- withdraw_amount);
+        else
+            return null;
         newWithdraw.setDate(new Date());
-        newWithdraw.setTime(new Timestamp(System.currentTimeMillis()));
         
         
-        return withDrawRepository.save(newWithdraw);;
+        return withDrawRepository.save(newWithdraw);
     }
 }
