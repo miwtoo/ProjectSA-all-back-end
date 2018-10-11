@@ -16,13 +16,10 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-
+    private String name;
     private String userName;
+    private String passWord;
     private String position;
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<History> histories = new ArrayList<>();
 
     protected User(){}
 
@@ -30,8 +27,10 @@ public class User {
         this.id = userId;
     }
 
-    public User(String userName, String position){
+    public User(String userName, String passWord , String name, String position){
         this.userName = userName;
+        this.passWord = passWord;
+        this.name = name;
         this.position = position;
     }
 

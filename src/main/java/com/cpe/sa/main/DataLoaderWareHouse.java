@@ -12,34 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoaderWareHouse implements ApplicationRunner {
 
-    @Autowired private CategoryRepository categoryRepository;
     @Autowired private UserRepository userRepository;
-    @Autowired private UnitRepository unitRepository;
-    @Autowired private TypeRepository typeRepository;
 
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
 
-        userRepository.save(new User("Miwtoo", "CEO"));
-        userRepository.save(new User("Miwtree", "Pharmacy"));
-        userRepository.save(new User("Miwfour", "Pharmacy"));
+        userRepository.save(new User("miwtoo","1234567","Miwtoo", "CEO"));
+        userRepository.save(new User("miwtree","00000000","Miwtree", "Pharmacy"));
+        userRepository.save(new User("miwfour","111222333","Miwfour", "Pharmacy"));
         userRepository.findAll().forEach(System.out::println);
-
-
-        categoryRepository.save(new Category("ยา"));
-        categoryRepository.save(new Category("ทั่วไป"));
-        categoryRepository.findAll().forEach(System.out::println);
-
-        unitRepository.save(new Unit("กล่อง"));
-        unitRepository.save(new Unit("เม็ด"));
-        unitRepository.save(new Unit("แผง"));
-        unitRepository.findAll().forEach(System.out::println);
-
-        typeRepository.save(new Type("เพิ่มสินค้า"));
-        typeRepository.save(new Type("เบิกสินค้า"));
-        typeRepository.findAll().forEach(System.out::println);
 	}
     
 }
