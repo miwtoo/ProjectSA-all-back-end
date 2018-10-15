@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class DataLoaderWareHouse implements ApplicationRunner {
+public class DataLoader implements ApplicationRunner {
 
     @Autowired private UserRepository userRepository;
 
