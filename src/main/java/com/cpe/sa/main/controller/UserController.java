@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,15 +26,20 @@ public class UserController{
         return userRepository.findAll();
     }
 
-    @PostMapping()
-    public Boolean findUserName(@RequestBody Map<String,String> body) throws NotFoundException {
+    @PostMapping("/add")
+    public User newUser(@RequestBody User body){
+        return userRepository.save(body);
+    }
 
-        User user = userRepository.findByUserName(body.get("username"));
+    @PostMapping("/login")
+    public User findUserName(User user,@RequestBody Map<String,String> body) throws NotFoundException {
+
         
-
-        if(user == null){
-            //System.out.println("No User!");
-            //return false;
+        
+        try {
+            user = userRepository.findByUserName(body.get("username"));
+        }
+        catch (Exception err) {
             throw new NotFoundException();
         }
             
@@ -44,9 +48,9 @@ public class UserController{
             //System.out.println("Not Password!");
             //return false;
             throw new NotFoundException();
-        }
-            
-        
-        return true;
+        }  
+    
+
+        return user;
     }
 }
