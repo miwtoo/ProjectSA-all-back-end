@@ -65,6 +65,10 @@ public class DataLoaderCustomer implements ApplicationRunner {
         diseaseRepository.save(diseaseEntity3);
         diseaseRepository.save(diseaseEntity4);
         diseaseRepository.save(diseaseEntity5);
+
+        diseaseRepository.findAll().forEach(System.out::println);
+        prefixRepository.findAll().forEach(System.out::println);
+        sexRepository.findAll().forEach(System.out::println);
     }
 
 }

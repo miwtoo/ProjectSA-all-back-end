@@ -56,7 +56,7 @@ public class RegisterCustomerController {
 
     @PostMapping("/add")
     @ResponseBody
-    public void newProfiles(@RequestBody() Map<String, Object> body) {
+    public String newProfiles(@RequestBody() Map<String, Object> body) {
         // public String newProfiles( @PathVariable String tel,@PathVariable String prefix
         //,@PathVariable String fname,@PathVariable String lname,@PathVariable String sex,@PathVariable String allergy) {
 
@@ -71,6 +71,7 @@ public class RegisterCustomerController {
         profilesEntity.setSex(sexEntity);
         profilesEntity.setDisease(diseaseEntity);
         profilesRepository.save(profilesEntity);
+        return "บันทึกเรียบร้อย";
 
     }
 
