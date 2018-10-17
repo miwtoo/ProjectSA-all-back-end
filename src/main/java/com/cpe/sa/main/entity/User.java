@@ -17,8 +17,11 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @JsonIgnore
     private String userName;
+    @JsonIgnore
     private String passWord;
+    
     private String position;
 
     protected User(){}
