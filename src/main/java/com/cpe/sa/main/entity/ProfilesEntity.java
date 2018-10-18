@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.SequenceGenerator;
+
 @Entity
 @Data
 @ToString
