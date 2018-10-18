@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/history")
 public class WareHouseController{
     @Autowired private HistoryRepository historyRepository;
     @Autowired private ItemRepository itemRepository;
@@ -29,17 +27,17 @@ public class WareHouseController{
     @Autowired private UnitRepository unitRepository;
     @Autowired private CategoryRepository categoryRepository;
 
-    @GetMapping()
+    @GetMapping("/history")
     public List<History> histories(){
         return historyRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/history/{id}")
     public Optional<History> historiesOne(@PathVariable Long id){
         return historyRepository.findById(id);
     }
 
-    @PostMapping()
+    @PostMapping("/history")
     public History newHistory(History newHistory, @RequestBody() Map<String,Object> body) {  
         Optional<Item> item = itemRepository.findById((Long.valueOf( body.get("item").toString() )));
         
@@ -64,33 +62,33 @@ public class WareHouseController{
 
     
     //----------Category---------
-    @GetMapping()
+    @GetMapping("/category")
     public List<Category> categories(){
         return categoryRepository.findAll();
     }
 
     //----------Item------------------
 
-    @GetMapping()
+    @GetMapping("/item")
     public List<Item> items(){
         return itemRepository.findAll();
     }
 
-    @GetMapping("/name")
+    @GetMapping("/item/name")
     public Item itemsName(@PathVariable String name){
         return itemRepository.findByItemName(name);
     }
 
     //----------Type----------------
 
-    @GetMapping()
+    @GetMapping("/type")
     public List<Type> types(){
         return typeRepository.findAll();
     }
 
     //-------Unit----------------
 
-    @GetMapping()
+    @GetMapping("/unit")
     public List<Unit> units(){
         return unitRepository.findAll();
     }
