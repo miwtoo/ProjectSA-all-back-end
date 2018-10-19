@@ -25,11 +25,5 @@ public class DiseaseEntity {
     Long diseaseid;
     private @NonNull String allergy;
 
-  // @OneToMany(mappedBy="profilesid") //delete Cascade
-   // private List<ProfilesEntity> comments = new ArrayList<ProfilesEntity>();
-
-   // @OneToMany(fetch = FetchType.EAGER,orphanRemoval = true,cascade = CascadeType.PERSIST)
-  // @JoinColumn(name="diseaseid", referencedColumnName="diseaseid", insertable = true)
-  //  private List<ProfilesEntity> comments = new ArrayList<ProfilesEntity>();
 }
 

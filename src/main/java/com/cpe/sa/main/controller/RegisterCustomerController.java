@@ -56,10 +56,8 @@ public class RegisterCustomerController {
 
     @PostMapping("/add")
     @ResponseBody
-    public String newProfiles(@RequestBody() Map<String, Object> body) {
-        // public String newProfiles( @PathVariable String tel,@PathVariable String prefix
-        //,@PathVariable String fname,@PathVariable String lname,@PathVariable String sex,@PathVariable String allergy) {
-
+    public void newProfiles(@RequestBody() Map<String, Object> body) {
+        
         ProfilesEntity profilesEntity = new ProfilesEntity();
         PrefixEntity prefixEntity = prefixRepository.findByPrefix(body.get("prefix").toString());
         SexEntity sexEntity = sexRepository.findBySex(body.get("sex").toString());
@@ -71,57 +69,9 @@ public class RegisterCustomerController {
         profilesEntity.setSex(sexEntity);
         profilesEntity.setDisease(diseaseEntity);
         profilesRepository.save(profilesEntity);
-        return "บันทึกเรียบร้อย";
-
+      
+        
     }
-
-
-
-    @DeleteMapping("/delete/{tel}")
-
-    public void deleteProfiles(@PathVariable String tel) {
-
-
-        profilesRepository.delete(profilesRepository.findByTelephonenumber(tel));
-
-
-
-
-    }
-
-    @GetMapping("/search/{tel}")
-    public ProfilesEntity search(@PathVariable String tel){
-        return profilesRepository.findByTelephonenumber(tel);
-
-    }
-
-    @PutMapping("/update")
-    @ResponseBody
-    public void updateProfiles(@RequestBody() Map<String, Object> body) {
-        // public String newProfiles( @PathVariable String tel,@PathVariable String prefix
-        //,@PathVariable String fname,@PathVariable String lname,@PathVariable String sex,@PathVariable String allergy) {
-
-
-
-        ProfilesEntity profilesEntityforupdate = profilesRepository.findByTelephonenumber(body.get("tel").toString());
-
-
-        PrefixEntity prefixEntity = prefixRepository.findByPrefix(body.get("prefix").toString());
-        SexEntity sexEntity = sexRepository.findBySex(body.get("sex").toString());
-
-        DiseaseEntity diseaseEntity = diseaseRepository.findByAllergy(body.get("allergy").toString());
-
-        profilesEntityforupdate.setPrefix(prefixEntity);
-        profilesEntityforupdate.setFirstname(body.get("fname").toString());
-        profilesEntityforupdate.setLastname(body.get("lname").toString());
-       // profilesEntity.setTelephonenumber(body.get("tel").toString());
-        profilesEntityforupdate.setSex(sexEntity);
-        profilesEntityforupdate.setDisease(diseaseEntity);
-        profilesRepository.save(profilesEntityforupdate);
-
-    }
-
-
 
 
 }

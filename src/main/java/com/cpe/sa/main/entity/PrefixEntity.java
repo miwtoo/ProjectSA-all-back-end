@@ -21,12 +21,5 @@ public class PrefixEntity {
 
     private  Long prefixid;
     private @NonNull String prefix;
-   // @OneToMany(mappedBy="profilesid") //delete Cascade
-   // private List<ProfilesEntity>comments = new ArrayList<ProfilesEntity>();
 
-    //@OneToMany(fetch = FetchType.EAGER,orphanRemoval = true,cascade = CascadeType.PERSIST)
-  // @JoinColumn(name="prefixid", referencedColumnName="prefixid", insertable = true)
-  //  private List<ProfilesEntity>comments = new ArrayList<ProfilesEntity>();
-
-   // private Collection<ProfilesEntity> listProfilesEntity;
 }
