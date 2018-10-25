@@ -19,7 +19,7 @@ public class History {
     private User user;
 
     @ManyToOne()
-    private Item item;
+    private Pill item;
 
     @ManyToOne()
     private Type type;
