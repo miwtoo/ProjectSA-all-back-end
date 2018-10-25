@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class DataLoaderWareHouse implements ApplicationRunner {
 
     @Autowired private UnitRepository unitRepository;
-    @Autowired private TypeRepository typeRepository;
+    @Autowired private StatusRepository statusRepository;
 
 
     @Override
@@ -24,9 +24,9 @@ public class DataLoaderWareHouse implements ApplicationRunner {
         unitRepository.save(new Unit("แผง"));
         unitRepository.findAll().forEach(System.out::println);
 
-        typeRepository.save(new Type("นำเข้า"));
-        typeRepository.save(new Type("เบิก"));
-        typeRepository.findAll().forEach(System.out::println);
+        statusRepository.save(new Status("นำเข้า"));
+        statusRepository.save(new Status("เบิก"));
+        statusRepository.findAll().forEach(System.out::println);
 	}
     
 }

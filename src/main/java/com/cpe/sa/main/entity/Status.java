@@ -16,20 +16,20 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class Type{
+public class Status{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;
 
-    @OneToMany(mappedBy = "type")
+    @OneToMany(mappedBy = "status")
     @JsonIgnore
     private List<History> histories = new ArrayList<>();
 
-    protected Type(){}
+    protected Status(){}
 
-    public Type(String name){
+    public Status(String name){
         this.name = name;
     }
 

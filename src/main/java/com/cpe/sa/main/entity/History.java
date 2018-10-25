@@ -22,7 +22,7 @@ public class History {
     private Pill item;
 
     @ManyToOne()
-    private Type type;
+    private Status status;
 
     @ManyToOne()
     private Unit unit;

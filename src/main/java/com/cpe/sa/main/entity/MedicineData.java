@@ -34,7 +34,7 @@ public class MedicineData {
     public MedicineData(String brand,String detail) {
         User user = new User();
         Pill pill = new Pill();
-        Type type = new Type();
+        TypePill type = new TypePill();
         this.brand = brand;
         this.detail = detail;
     }

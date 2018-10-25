@@ -23,7 +23,7 @@ public class WareHouseController{
     @Autowired private HistoryRepository historyRepository;
     @Autowired private PillRepository itemRepository;
     @Autowired private UserRepository userRepository;
-    @Autowired private TypeRepository typeRepository;
+    @Autowired private StatusRepository statusRepository;
     @Autowired private UnitRepository unitRepository;
 
     @GetMapping("/history")
@@ -41,7 +41,7 @@ public class WareHouseController{
         Optional<Pill> item = itemRepository.findById((Long.valueOf( body.get("item").toString() )));
         
         Optional<User> user = userRepository.findById((Long.valueOf( body.get("user").toString() )));
-        Optional<Type> type = typeRepository.findById((Long.valueOf( body.get("type").toString() )));
+        Optional<Status> status = statusRepository.findById((Long.valueOf( body.get("type").toString() )));
         Optional<Unit> unit = unitRepository.findById((Long.valueOf( body.get("unit").toString() )));
 
         
@@ -49,7 +49,7 @@ public class WareHouseController{
         newHistory.setItem(item.get());
 
         newHistory.setUser(user.get());
-        newHistory.setType(type.get());
+        newHistory.setStatus(status.get());
         newHistory.setUnit(unit.get());
         
         newHistory.setAmount( Float.valueOf(body.get("amount").toString()));
@@ -62,8 +62,8 @@ public class WareHouseController{
     //----------Type----------------
 
     @GetMapping("/type")
-    public List<Type> types(){
-        return typeRepository.findAll();
+    public List<Status> types(){
+        return statusRepository.findAll();
     }
 
     //-------Unit----------------
