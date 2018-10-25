@@ -16,13 +16,13 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private String name;
     @JsonIgnore
     private String userName;
     @JsonIgnore
     private String passWord;
     
-    private String position;
+    @OneToOne
+    private personnel personnel;
 
     protected User(){}
 
@@ -30,11 +30,13 @@ public class User {
         this.id = userId;
     }
 
-    public User(String userName, String passWord , String name, String position){
+    public User(String userName, String passWord, Long personnelID){
+        
+        personnel person = new personnel(personnelID);
+
+        this.personnel = person;
         this.userName = userName;
         this.passWord = passWord;
-        this.name = name;
-        this.position = position;
     }
 
 }

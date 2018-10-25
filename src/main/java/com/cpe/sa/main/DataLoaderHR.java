@@ -13,13 +13,18 @@ import org.springframework.stereotype.Component;
 public class DataLoaderHR implements ApplicationRunner {
 
     @Autowired private departmentrepos Departmentrepos;
+    @Autowired private Personrepos personnelRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+
         Departmentrepos.save(new Department("ขาย"));
 		Departmentrepos.save(new Department("จัดของ"));
 		Departmentrepos.save(new Department("ส่งของ"));
-		Departmentrepos.findAll().forEach(System.out::println);
+        Departmentrepos.findAll().forEach(System.out::println);
+        
+        personnelRepository.save(new personnel("a","b","c","d","e","f"));
 	}
     
 }
