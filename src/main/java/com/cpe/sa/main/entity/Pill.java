@@ -25,12 +25,17 @@ public class Pill {
     @ManyToOne
     private TimePill timePills;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="pill")
     @JsonIgnore
     private List<Inform> inform = new ArrayList<>();
 
-    protected Pill() {
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="pill")
+    @JsonIgnore
+    private List<MedicineData> medicineData = new ArrayList<>();
+
+    
+
+    protected Pill() {}
 
     public Pill(String name) {
         this.name = name;

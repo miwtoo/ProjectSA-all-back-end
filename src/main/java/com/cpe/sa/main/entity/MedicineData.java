@@ -23,17 +23,17 @@ public class MedicineData {
 
     @ManyToOne()
     @JoinColumn(name = "typeId")
-    private Type type;
+    private TypePill type;
 
     @ManyToOne()
     @JoinColumn(name = "medicineId")
-    private Medicine medicine;
+    private Pill pill;
 
 
 
     public MedicineData(String brand,String detail) {
         User user = new User();
-        Medicine medicine = new Medicine();
+        Pill pill = new Pill();
         Type type = new Type();
         this.brand = brand;
         this.detail = detail;
