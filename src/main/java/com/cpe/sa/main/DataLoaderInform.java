@@ -20,6 +20,9 @@ public class DataLoaderInform implements ApplicationRunner {
     @Autowired
     private TypePillrepository typepillrepository;
 
+    @Autowired
+    private MessageRepository messageRepository;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -32,7 +35,35 @@ public class DataLoaderInform implements ApplicationRunner {
         timepillrepository.save(new TimePill("กลางวัน"));
         timepillrepository.save(new TimePill("เย็น"));
         timepillrepository.save(new TimePill("ก่อนนอน"));
+
+        timepillrepository.save(new TimePill("เช้า/กลางวัน"));
+        timepillrepository.save(new TimePill("เช้า/เย็น"));
+        timepillrepository.save(new TimePill("เช้า/ก่อนนอน"));
+        timepillrepository.save(new TimePill("กลางวัน/เย็น"));
+        timepillrepository.save(new TimePill("กลางวัน/ก่อนนอน"));
+        timepillrepository.save(new TimePill("เย็น/ก่อนนอน"));
+       
+
+        timepillrepository.save(new TimePill("เช้า/กลางวัน/เย็น"));
+        timepillrepository.save(new TimePill("เช้า/กลางวัน/ก่อนนอน"));
+        timepillrepository.save(new TimePill("เช้า/เย็น/ก่อนนอน"));
+        timepillrepository.save(new TimePill("กลางวัน/เย็น/ก่อนนอน"));
+
+        timepillrepository.save(new TimePill("เช้า/กลางวัน/เย็น/ก่อนนอน"));
         timepillrepository.findAll().forEach(System.out::println);
+
+
+        typepillrepository.save(new TypePill("ยาน้ำ"));
+        typepillrepository.save(new TypePill("ยาเม็ด"));
+        typepillrepository.save(new TypePill("ยาทาภายนอก"));
+        typepillrepository.save(new TypePill("ยาทาภายใน"));
+        typepillrepository.findAll().forEach(System.out::println);
+
+
+        messageRepository.save(new Message("อย่าลืมรับประทานยานะครับ"));
+        messageRepository.save(new Message("รับประทานยาแล้วอย่าลืมดื่มน้ำน๊า"));
+        messageRepository.save(new Message("ยาหลังอาหาร ขอให้หายไวๆนะ"));
+        messageRepository.save(new Message("ดีขึ้นหรือยัง กินยาก่อนอาหารน๊า"));
 
     };
 }
