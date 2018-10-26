@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 public class DataloderMedicine implements ApplicationRunner {
 
     @Autowired UserRepository userRepository;
-    @Autowired TypeRepository typeRepository;
-    @Autowired MedicineRepository medicineRepository ;
+    @Autowired TypePillrepository typeRepository;
+    @Autowired PillRepository pillRepository ;
     @Autowired MedicineDataRepository medicineDataRepository;
 
 
@@ -24,13 +24,13 @@ public class DataloderMedicine implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-        Stream.of("-","Paracetamol").forEach(medicineName -> {
-            medicineRepository.save(new Medicine(medicineName));
+        Stream.of("ยาธาตุน้ำขาว","Paracetamol").forEach(medicineName -> {
+            pillRepository.save(new Pill(medicineName));
         });
-        medicineRepository.findAll().forEach(System.out::println);
+        pillRepository.findAll().forEach(System.out::println);
 
         Stream.of("-","ยาสามัญทั่วไป","ยาควบคุม","ยาบำรุงร่างกาย","ผลิตภัณฑ์บำรุงความงาม").forEach(typeName -> {
-            typeRepository.save(new Type(typeName));
+            typeRepository.save(new TypePill(typeName));
         });
         typeRepository.findAll().forEach(System.out::println);
 	}

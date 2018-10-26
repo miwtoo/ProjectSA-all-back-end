@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class DataLoader implements ApplicationRunner {
+public class DataLoaderUser implements ApplicationRunner {
 
     @Autowired private UserRepository userRepository;
 
@@ -19,9 +19,9 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-        userRepository.save(new User("miwtoo","1234567","Miwtoo", "CEO"));
-        userRepository.save(new User("miwtree","00000000","Miwtree", "Pharmacy"));
-        userRepository.save(new User("miwfour","111222333","Miwfour", "Pharmacy"));
+        userRepository.save(new User("miwtoo","1234567",1L));
+        //userRepository.save(new User("miwtree","00000000",2L));
+        //userRepository.save(new User("miwfour","111222333",3L));
         userRepository.findAll().forEach(System.out::println);
 	}
     

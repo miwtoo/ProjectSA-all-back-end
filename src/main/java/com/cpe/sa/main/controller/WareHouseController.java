@@ -21,11 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("http://localhost:4200")
 public class WareHouseController{
     @Autowired private HistoryRepository historyRepository;
-    @Autowired private ItemRepository itemRepository;
+    @Autowired private PillRepository itemRepository;
     @Autowired private UserRepository userRepository;
-    @Autowired private TypeRepository typeRepository;
+    @Autowired private StatusRepository statusRepository;
     @Autowired private UnitRepository unitRepository;
-    @Autowired private CategoryRepository categoryRepository;
 
     @GetMapping("/history")
     public List<History> histories(){
@@ -39,10 +38,10 @@ public class WareHouseController{
 
     @PostMapping("/history")
     public History newHistory(History newHistory, @RequestBody() Map<String,Object> body) {  
-        Optional<Item> item = itemRepository.findById((Long.valueOf( body.get("item").toString() )));
+        Optional<Pill> item = itemRepository.findById((Long.valueOf( body.get("item").toString() )));
         
         Optional<User> user = userRepository.findById((Long.valueOf( body.get("user").toString() )));
-        Optional<Type> type = typeRepository.findById((Long.valueOf( body.get("type").toString() )));
+        Optional<Status> status = statusRepository.findById((Long.valueOf( body.get("type").toString() )));
         Optional<Unit> unit = unitRepository.findById((Long.valueOf( body.get("unit").toString() )));
 
         
@@ -50,7 +49,7 @@ public class WareHouseController{
         newHistory.setItem(item.get());
 
         newHistory.setUser(user.get());
-        newHistory.setType(type.get());
+        newHistory.setStatus(status.get());
         newHistory.setUnit(unit.get());
         
         newHistory.setAmount( Float.valueOf(body.get("amount").toString()));
@@ -60,30 +59,11 @@ public class WareHouseController{
         return historyRepository.save(newHistory);
     }
 
-    
-    //----------Category---------
-    @GetMapping("/category")
-    public List<Category> categories(){
-        return categoryRepository.findAll();
-    }
-
-    //----------Item------------------
-
-    @GetMapping("/item")
-    public List<Item> items(){
-        return itemRepository.findAll();
-    }
-
-    @GetMapping("/item/name")
-    public Item itemsName(@PathVariable String name){
-        return itemRepository.findByItemName(name);
-    }
-
     //----------Type----------------
 
     @GetMapping("/type")
-    public List<Type> types(){
-        return typeRepository.findAll();
+    public List<Status> types(){
+        return statusRepository.findAll();
     }
 
     //-------Unit----------------

@@ -34,18 +34,5 @@ public class DataLoaderInform implements ApplicationRunner {
         timepillrepository.save(new TimePill("ก่อนนอน"));
         timepillrepository.findAll().forEach(System.out::println);
 
-        pillrepository.save(new Pill("Parasetamon"));
-        pillrepository.save(new Pill("Mha"));
-        pillrepository.save(new Pill("E"));
-        pillrepository.findAll().forEach(System.out::println);
-
-        typepillrepository.save(new TypePill("ยาน้ำ"));
-        typepillrepository.save(new TypePill("ยาเม็ด"));
-        typepillrepository.save(new TypePill("ยาทาภายนอก"));
-        typepillrepository.save(new TypePill("ยาทาภายใน"));
-        typepillrepository.findAll().forEach(System.out::println);
-
-   
-
     };
 }

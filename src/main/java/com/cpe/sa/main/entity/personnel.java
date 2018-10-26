@@ -7,7 +7,7 @@ import java.util.*;
 @Table(name="personnel")
 public class personnel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
 
     private  @NonNull Long personid;
     private  @NonNull String name;
@@ -17,18 +17,19 @@ public class personnel {
     private  @NonNull String ssid;
     private  @NonNull String birthday;
 
-
+    public personnel(Long personid){
+        this.personid = personid;
+    }
 
     protected personnel(){}
-
-    public personnel(String name,String phone,String addrees,String email,String ssid,String birthday,Long personid)
+ 
+    public personnel(String name,String phone,String addrees,String email,String ssid,String birthday)
     {
-        this.personid=personid;
         this.name=name;
         this.phone=phone;
         this.addrees=addrees;
         this.birthday=birthday;
         this.email=email;
         this.ssid=ssid;
-    }
+    } 
 }

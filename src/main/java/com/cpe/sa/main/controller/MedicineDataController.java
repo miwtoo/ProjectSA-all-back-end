@@ -1,5 +1,6 @@
 package com.cpe.sa.main.controller;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -20,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class MedicineDataController{
     @Autowired private MedicineDataRepository medicineDataRepository;
     @Autowired private UserRepository userRepository;
-    @Autowired private MedicineRepository medicineRepository;
-    @Autowired private TypeRepository typeRepository;
+    @Autowired private PillRepository pillRepository;
+    @Autowired private TypePillrepository typePillRepository;
 
     @GetMapping("/MedicineData")
     public Collection<MedicineData> items(){
@@ -36,13 +37,13 @@ public class MedicineDataController{
     @PostMapping("/MedicineData/addMedicineData")
     public MedicineData newMedicineData(MedicineData newMedicineData,@RequestBody() Map<String,Object> body) {
         Optional<User> user = userRepository.findById(Long.valueOf(body.get("user").toString()));
-        Optional<Type> type = typeRepository.findById(Long.valueOf(body.get("type").toString()));
-        Optional<Medicine> medicine = medicineRepository.findById(Long.valueOf(body.get("medicine").toString()));
+        Optional<TypePill> type = typePillRepository.findById(Long.valueOf(body.get("type").toString()));
+        Optional<Pill> medicine = pillRepository.findById(Long.valueOf(body.get("medicine").toString()));
 
 
         newMedicineData.setUser(user.get());
         newMedicineData.setType(type.get());
-        newMedicineData.setMedicine(medicine.get());
+        newMedicineData.setPill(medicine.get());
 
         newMedicineData.setBrand(body.get("brandName").toString());
         newMedicineData.setDetail(body.get("detail").toString());
@@ -64,32 +65,32 @@ public class MedicineDataController{
 
     //=============Medicine=================
      @GetMapping("/Medicine")
-     public Collection<Medicine> Medicine(){
-         return medicineRepository.findAll();
+     public Collection<Pill> Medicine(){
+         return pillRepository.findAll();
      }
      @GetMapping("/Medicine/{medicineID}")
-     public Optional<Medicine> takeinMedicineByid(@PathVariable Long medicineID ){
-         return medicineRepository.findById(medicineID);
+     public Optional<Pill> takeinMedicineByid(@PathVariable Long medicineID ){
+         return pillRepository.findById(medicineID);
      }
 
     @PostMapping("/Medicine/addMedicine/{medicineName}")
-    public Medicine newMedicine(@PathVariable String medicineName){
-        Medicine newMedicine = new Medicine(medicineName);
-        return medicineRepository.save(newMedicine);
+    public Pill newMedicine(@PathVariable String medicineName){
+        Pill newMedicine = new Pill(medicineName);
+        return pillRepository.save(newMedicine);
     }
 
     //=============Type==================
-    @GetMapping("/Type")
-    public Collection<Type> Type(){
-        return typeRepository.findAll();
+    @GetMapping("/TypePill")
+    public List<TypePill> Type(){
+        return typePillRepository.findAll();
     }
-    @GetMapping("/Type/{typeID}")
-    public Optional<Type> takeinTypeByid(@PathVariable Long typeID ){
-        return typeRepository.findById(typeID);
+    @GetMapping("/TypePill/{typeID}")
+    public Optional<TypePill> takeinTypeByid(@PathVariable Long typeID ){
+        return typePillRepository.findById(typeID);
     }
-    @PostMapping("/Type/addType/{typeName}")
-    public Type newType(@PathVariable String typeName){
-        Type newType = new Type(typeName); 
-        return typeRepository.save(newType); 
+    @PostMapping("/TypePill/addType/{typeName}")
+    public TypePill newType(@PathVariable String typeName){
+        TypePill newType = new TypePill(typeName); 
+        return typePillRepository.save(newType); 
     }
 }
