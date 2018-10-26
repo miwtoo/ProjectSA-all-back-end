@@ -24,7 +24,6 @@ public class DataLoaderHR implements ApplicationRunner {
 		Departmentrepos.save(new Department("ส่งของ"));
         Departmentrepos.findAll().forEach(System.out::println);
         
-        personnelRepository.save(new personnel("a","b","c","d","e","f"));
 	}
     
 }

@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.Map;
 import javax.validation.Valid;
-import java.util.Date;
+import java.util.*;
 
 
 import org.springframework.http.MediaType;
@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
+
+/***********************************************************************************************************************/
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -34,7 +36,7 @@ class DepartmentController {
     }
 
 }
-
+/***********************************************************************************************************************/
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -66,6 +68,8 @@ class JobPositionController {
     }
 
 }
+
+/***********************************************************************************************************************/
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -102,41 +106,46 @@ class JobRecordController {
 
 }
 
+/***********************************************************************************************************************/
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/persons")
 
  class personController {
+
     @Autowired private Personrepos repository;
-
-    public  personController(Personrepos repository){
-
-        this.repository = repository;
-    }
+    @Autowired private  UserRepository Userrepository;
 
     @GetMapping()
-
     public Collection<personnel> personnel() {
         return repository.findAll().stream()
                 .collect(Collectors.toList());
     }
-
     @PostMapping()
+    public void AddPerson(@RequestBody personnel body ){
 
-    public personnel AddPerson(@RequestBody personnel body){
 
-        return repository.save(body);
+
+        // System.out.println(body.getName());
+       //   System.out.println(body.getPassword());
+        // System.out.println(body.getUsername());
+
+         String name = body.getName();
+         String username = body.getUsername();
+         String passWord = body.getPassword();
+
+       repository.save(body);
+     Userrepository.save(new User(username, passWord,name));
+
+
+
     }
-
 
     @DeleteMapping("delete/{id}")
     public  boolean deletePerson(@PathVariable  Long id) {
         try {
-
             repository.deleteById(id);
-
-
-
             return true;
         }catch (Exception e) {
             return false;

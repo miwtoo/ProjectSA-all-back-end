@@ -19,9 +19,9 @@ public class DataLoaderUser implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-        userRepository.save(new User("miwtoo","1234567",1L));
-        //userRepository.save(new User("miwtree","00000000",2L));
-        //userRepository.save(new User("miwfour","111222333",3L));
+        userRepository.save(new User("miwtoo","1234567","Miwtoo"));
+        userRepository.save(new User("miwtree","00000000","Miwtree"));
+        userRepository.save(new User("miwfour","111222333","Miwfour"));
         userRepository.findAll().forEach(System.out::println);
 	}
     
