@@ -1,22 +1,18 @@
 package com.cpe.sa.main;
 
 import java.util.stream.Stream;
-
 import com.cpe.sa.main.entity.*;
 import com.cpe.sa.main.repository.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class DataloderMedicine implements ApplicationRunner {
 
     @Autowired UserRepository userRepository;
-    @Autowired TypePillrepository typeRepository;
-    @Autowired PillRepository pillRepository ;
+    @Autowired TypeRepository typeRepository;
     @Autowired MedicineDataRepository medicineDataRepository;
 
 
@@ -24,13 +20,9 @@ public class DataloderMedicine implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-        Stream.of("ยาธาตุน้ำขาว","Paracetamol").forEach(medicineName -> {
-            pillRepository.save(new Pill(medicineName));
-        });
-        pillRepository.findAll().forEach(System.out::println);
 
         Stream.of("-","ยาสามัญทั่วไป","ยาควบคุม","ยาบำรุงร่างกาย","ผลิตภัณฑ์บำรุงความงาม").forEach(typeName -> {
-            typeRepository.save(new TypePill(typeName));
+            typeRepository.save(new Type(typeName));
         });
         typeRepository.findAll().forEach(System.out::println);
 	}

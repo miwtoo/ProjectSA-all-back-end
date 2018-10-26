@@ -23,7 +23,7 @@ public class MedicineData {
 
     @ManyToOne()
     @JoinColumn(name = "typeId")
-    private TypePill type;
+    private Type type;
 
     @ManyToOne()
     @JoinColumn(name = "medicineId")
