@@ -10,5 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public
 interface TimePillRepository extends JpaRepository<TimePill, Long> {
 
+	TimePill findBytimepill(String string);
+
 
 }

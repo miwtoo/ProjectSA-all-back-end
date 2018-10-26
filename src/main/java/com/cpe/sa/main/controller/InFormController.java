@@ -35,6 +35,7 @@ public class InFormController {
     public Collection<Message> Informs() {
         return messageRepository.findAll();
     }
+
     @GetMapping("/inform")
     public Collection<Inform> Inform() {
         return informrepository.findAll().stream().collect(Collectors.toList());

@@ -18,11 +18,11 @@ public class Used {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
-        private String useds;
+        private String used;
 
         protected Used() {}
 
-        public Used(String useds) {
-                this.useds = useds;
+        public Used(String used) {
+                this.used = used;
         }
 }

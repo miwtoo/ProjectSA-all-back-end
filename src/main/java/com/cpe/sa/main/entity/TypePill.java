@@ -12,13 +12,13 @@ public class TypePill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String type;
+    private String typepill;
 
     public TypePill() {
     }
 
-    public TypePill(String type) {
-        this.type = type;
+    public TypePill(String typepill) {
+        this.typepill = typepill;
 
     }
 
