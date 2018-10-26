@@ -27,8 +27,14 @@ public class InFormController {
     private Usedrepository usedrepository;
     @Autowired
     private InformRepository informrepository;
+    @Autowired
+    private MessageRepository messageRepository;
 
 
+    @GetMapping("/message")
+    public Collection<Message> Informs() {
+        return messageRepository.findAll();
+    }
     @GetMapping("/inform")
     public Collection<Inform> Inform() {
         return informrepository.findAll().stream().collect(Collectors.toList());
@@ -43,8 +49,10 @@ public class InFormController {
     public void newInform(Inform newInform, @RequestBody() Map<String, Object> body) {
         Pill pill = pillRepository.findByName(body.get("pill").toString());
         ProfilesEntity cus = customerRepository.findByTelephonenumber(body.get("customer").toString());
+        Message message =  messageRepository.findByMessage(body.get("message").toString());
 
         newInform.setPill(pill);
+        newInform.setMessage(message);
         newInform.setCustomer(cus);
         newInform.setDate(new Date(Long.valueOf(body.get("date").toString())));
 

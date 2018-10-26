@@ -26,6 +26,9 @@ public class Inform {
     @NonNull
     private Pill pill;
 
+    @ManyToOne
+    private Message message;
+
     protected Inform() {
     }
 
