@@ -52,22 +52,4 @@ public class InFormController {
         System.out.println(body);
     }
 
-    @GetMapping("/pill")
-    public Collection<Pill> pill() {
-        return pillRepository.findAll();
-    }
-
-    @GetMapping("/pill/{pillid}")
-    public Pill getOnePill(@PathVariable Long pillid) {
-        return pillRepository.findById(pillid).get();
-    }
-
-    @PostMapping("/pill")
-    public Pill newPill(Pill newPill, @RequestBody Map<String, Object> body) {
-        Pill pill = pillRepository.findByName(body.get("name").toString());
-
-        newPill.setName(pill.getName());
-        return pillRepository.save(newPill);
-    }
-
 }

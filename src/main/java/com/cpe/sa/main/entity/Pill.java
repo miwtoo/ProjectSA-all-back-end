@@ -15,6 +15,7 @@ public class Pill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Float price;
 
     @ManyToOne
     private Used used;
