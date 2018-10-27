@@ -20,7 +20,7 @@ public class DataloderMedicine implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-
+       
         Stream.of("-","ยาสามัญทั่วไป","ยาควบคุม","ยาบำรุงร่างกาย","ผลิตภัณฑ์บำรุงความงาม").forEach(typeName -> {
             typeRepository.save(new Type(typeName));
         });
