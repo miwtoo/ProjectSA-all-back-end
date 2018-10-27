@@ -17,7 +17,7 @@ public class personnel {
     private  @NonNull String phone ;
     private  @NonNull String addrees;
     private  @NonNull String email;
-    private  @NonNull String ssid;
+    private  @NonNull Long ssid;
     @Temporal(TemporalType.DATE)
     private  @NonNull Date birthday;
 
@@ -28,7 +28,7 @@ public class personnel {
 
     protected personnel(){}
 
-    public personnel(String name,String phone,String addrees,String email,String ssid,Date birthday,Long personid , String userName, String passWord)
+    public personnel(String name,String phone,String addrees,String email,Long ssid,Date birthday,Long personid , String userName, String passWord)
 
     {
 
